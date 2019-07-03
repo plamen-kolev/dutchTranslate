@@ -2,7 +2,7 @@ const { Translate } = require('@google-cloud/translate');
 const translate = new Translate();
 
 // Imports the Google Cloud client library
-process.env.GOOGLE_APPLICATION_CREDENTIALS = '/etc/compute.json';
+process.env.GOOGLE_APPLICATION_CREDENTIALS = process.env.TRANSLATE_CONFIG || '/etc/compute.json';
 
 const translateFacade = (text, from, to) => {
   if (process.env.REAL_TRANSLATE) {

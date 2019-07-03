@@ -5,13 +5,14 @@ import './App.css';
 
 function App() {
   return (
-    <div>
-      <div>
-        <Translate from="en" to="nl"/>
-      </div>
-      <div>
-        <Translate from="nl" to="en"/>
-      </div>
+    <div class="row">
+      
+        <div class="col">
+          <Translate from="en" to="nl"/>
+        </div>
+        <div class="col">
+          <Translate from="nl" to="en"/>
+        </div>
     </div>
   );
 }

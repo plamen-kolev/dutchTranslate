@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import config from './config';
 
 export default class Translate extends React.Component {
     constructor(props) {
@@ -19,7 +20,10 @@ export default class Translate extends React.Component {
     }
 
     handleSubmit(event) {
-        fetch("https://localhost:3001/language", {
+        fetch(`${config.translationEndpoint}/translate`, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
             method: 'post',
             mode: 'cors',
             body: JSON.stringify({
@@ -30,8 +34,9 @@ export default class Translate extends React.Component {
           })
             .then(res => res.json())
             .then(
-            (result) => {
-                this.setState({submittedValue: result});
+            (data) => {
+                console.log(data.result);
+                this.setState({submittedValue: data.result});
             },
             // Note: it's important to handle errors here
             // instead of a catch() block so that we don't swallow
